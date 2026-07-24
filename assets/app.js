@@ -9,6 +9,7 @@
     "a11y.github": "在 GitHub 查看 LufiaASIO",
     "a11y.stats": "LufiaASIO 概览",
     "a11y.matrix": "可横向滚动的五乘五音频后端兼容矩阵",
+    "a11y.backends": "支持的五种 Windows 音频后端",
     "a11y.workflowMetrics": "工作流特性",
     "a11y.menuOpen": "打开导航",
     "a11y.menuClose": "关闭导航",
@@ -22,8 +23,11 @@
 
     "hero.eyebrow": "按你的方式连接 Windows 音频",
     "hero.version": "1.2.8 Alpha",
-    "hero.titleOne": "一个 ASIO 驱动。",
-    "hero.titleTwo": "连接五种 Windows 音频后端。",
+    "hero.titleOneLead": "一个",
+    "hero.titleOnePhrase": "ASIO 驱动。",
+    "hero.titleTwoLead": "连接五种",
+    "hero.titleTwoPlatform": "Windows",
+    "hero.titleTwoBackends": "音频后端。",
     "hero.lead": "输入与输出，自由组合。",
     "hero.description": "面向测量工作台的多协议音频路由器，让你自由搭配合适的 ADC、DAC、驱动与主机软件，同时保留熟悉的 ASIO 工作流。",
     "hero.alphaTitle": "预览版本。",
@@ -31,8 +35,6 @@
     "hero.download": "下载 1.2.8 Alpha",
     "hero.github": "在 GitHub 查看",
     "hero.platform": "Windows 10 / 11 · 支持 32 位与 64 位 ASIO 主机",
-    "hero.input": "输入",
-    "hero.output": "输出",
 
     "images.controlPanel": "LufiaASIO 控制面板，显示独立的 ASIO 输入和 WASAPI Exclusive 输出路由",
     "images.apx": "Audio Precision APx500 通过 LufiaASIO 进行 768 kHz 数字环回测量",
@@ -48,7 +50,8 @@
     "stats.qualifier": "* 仅当兼容的 WASAPI Exclusive PCM32 端点实际接受该格式时可用；不支持的采样率绝不会被模拟。",
 
     "routing.kicker": "突破单驱动限制的路由能力",
-    "routing.title": "构建工作台真正需要的信号链。",
+    "routing.titleLead": "构建工作台",
+    "routing.titleTail": "真正需要的信号链。",
     "routing.description": "输入与输出后端可以独立选择。遇到不受支持的路由时，LufiaASIO 会明确报告，而不会悄悄切换到其他 API。",
 
     "matrix.title": "任意后端，皆可彼此连接。",
@@ -57,6 +60,7 @@
     "matrix.itemTwo": "WASAPI Auto、Exclusive 与 Shared 三种选择",
     "matrix.itemThree": "逐侧验证精确采样率支持",
     "matrix.outputAxis": "输出后端",
+    "matrix.inputAxis": "输入后端",
     "matrix.inputOutput": "输入 / 输出",
     "matrix.caption": "LufiaASIO 支持的输入与输出后端组合",
     "matrix.supported": "支持",
@@ -90,7 +94,8 @@
     "workflows.disclaimer": "图中结果来自所示数字环回测试环境，仅作为示例，不构成其他硬件的保证规格。",
 
     "processing.kicker": "精密测量处理",
-    "processing.title": "把经过校准的处理放进路由。",
+    "processing.titleLead": "把经过校准的处理",
+    "processing.titleTail": "放进路由。",
     "processing.description": "逐通道工具仅出现在原生 ASIO 与 WASAPI Exclusive 路由中；配置按后端、方向、模式、设备 ID 和通道分别保存。",
     "processing.outputTool": "输入 / 输出工具",
     "processing.thdTitle": "逐通道 THD Compensation",
@@ -112,7 +117,8 @@
     "processing.cautionBody": "进行 bit-perfect 传输测试时应关闭 THD Compensation 和 Notch；启用前先建立干净的基线。",
 
     "quick.kicker": "快速开始",
-    "quick.title": "从安装程序到经过验证的路由。",
+    "quick.titleLead": "从安装程序",
+    "quick.titleTail": "到经过验证的路由。",
     "quick.description": "先在无处理状态下验证信号链，再只加入测量方法真正需要的工具。",
     "quick.stepOneTitle": "安装正确的软件包",
     "quick.stepOneBody": "64 位 Windows 请使用 x64 包，它会同时注册 x64 与 x86 ASIO 组件；仅 32 位 Windows 使用 x86 包。",
@@ -132,13 +138,16 @@
     "clock.fifo": "尽力而为的 FIFO",
     "clock.sync": "建议硬件同步",
 
-    "download.title": "准备构建更灵活的 Windows 音频链了吗？",
+    "download.titleLead": "准备构建更灵活的",
+    "download.titleTail": "Windows 音频链了吗？",
     "download.body": "请仅从官方发布页面下载，并在安装前核对随附的 SHA-256 文件。",
     "download.releases": "打开 GitHub Releases",
     "download.guide": "阅读安装指南",
 
     "faq.kicker": "常见问题",
-    "faq.title": "让测量保持可信的关键细节。",
+    "faq.titleLead": "让测量",
+    "faq.titleMiddle": "保持可信的",
+    "faq.titleTail": "关键细节。",
     "faq.description": "LufiaASIO 扩展了路由选择，但不会绕过硬件、驱动、格式或时钟本身的限制。",
     "faq.fullGuide": "完整故障排除指南",
     "faq.qOne": "为什么某个采样率没有出现？",
@@ -164,10 +173,10 @@
 
   const meta = {
     en: {
-      title: "LufiaASIO — Route without compromise",
-      description: "LufiaASIO is a multi-protocol Windows audio router: one ASIO driver, five backends, and independent input-to-output routing for measurement workflows.",
-      socialTitle: "LufiaASIO — Route without compromise",
-      socialDescription: "One ASIO driver. Five Windows audio backends. Any input-to-output combination.",
+      title: "LufiaASIO — High Performance ASIO for Audio & Acoustic",
+      description: "LufiaASIO is a High-Performance, Stress-Tested ASIO Routing Driver for Audio & Measurement, Combining WASAPI, WDM-KS, MME, DirectSound, and Native ASIO Inputs and Outputs.",
+      socialTitle: "LufiaASIO — High Performance ASIO for Audio & Acoustic",
+      socialDescription: "LufiaASIO is a High-Performance, Stress-Tested ASIO Routing Driver for Audio & Measurement, Combining WASAPI, WDM-KS, MME, DirectSound, and Native ASIO Inputs and Outputs.",
       imageAlt: "LufiaASIO logo"
     },
     "zh-CN": {

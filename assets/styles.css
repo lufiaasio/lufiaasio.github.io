@@ -54,6 +54,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html[lang="zh-CN"] body {
+  word-break: normal;
+  word-break: auto-phrase;
+  line-break: strict;
+}
+
 body::before {
   position: fixed;
   inset: 0;
@@ -530,8 +536,26 @@ p {
   letter-spacing: -0.063em;
 }
 
-.hero h1 span {
+.hero h1 > span {
   display: block;
+}
+
+.hero-title-token {
+  display: inline;
+}
+
+html[lang="zh-CN"] .hero-title-token {
+  display: block;
+  white-space: nowrap;
+}
+
+.localized-title-token {
+  display: inline;
+}
+
+html[lang="zh-CN"] .localized-title-token {
+  display: block;
+  white-space: nowrap;
 }
 
 .gradient-text {
@@ -697,41 +721,97 @@ p {
   font-size: 0.62rem;
 }
 
-.route-chip {
+.backend-bubbles {
   position: absolute;
+  inset: 0;
   z-index: 4;
-  display: flex;
-  flex-direction: column;
-  min-width: 155px;
-  padding: 11px 14px;
-  background: rgba(19, 30, 28, 0.93);
+  display: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.backend-bubble {
+  --bubble-rotation: 0deg;
+  --bubble-scale: 1;
+  position: absolute;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 13px;
+  color: var(--text-soft);
+  white-space: nowrap;
+  background: rgba(19, 30, 28, 0.9);
   border: 1px solid var(--border-strong);
-  border-radius: 13px;
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
+  border-radius: 999px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3), 0 0 22px rgba(36, 216, 223, 0.04);
+  font-size: 0.74rem;
+  font-weight: 720;
+  letter-spacing: 0.01em;
   backdrop-filter: blur(12px);
+  animation: backend-float var(--bubble-duration, 5.8s) ease-in-out var(--bubble-delay, 0s) infinite;
 }
 
-.route-chip span {
-  color: var(--accent);
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+.backend-bubble::before {
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: linear-gradient(135deg, var(--cyan), var(--lime));
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(36, 216, 223, 0.65);
 }
 
-.route-chip strong {
-  margin-top: 2px;
-  font-size: 0.78rem;
-  font-weight: 700;
+.backend-bubble-asio {
+  top: 3%;
+  left: -2%;
+  --bubble-rotation: -1.8deg;
+  --bubble-duration: 6.2s;
 }
 
-.route-chip-input {
-  top: 22%;
-  left: -3%;
+.backend-bubble-wasapi {
+  top: 7%;
+  right: -1%;
+  --bubble-rotation: 1.4deg;
+  --bubble-scale: 0.94;
+  --bubble-delay: -1.8s;
+  --bubble-duration: 5.4s;
 }
 
-.route-chip-output {
+.backend-bubble-directsound {
+  top: 43%;
   right: -7%;
-  bottom: 15%;
+  --bubble-rotation: 2deg;
+  --bubble-scale: 0.9;
+  --bubble-delay: -3.2s;
+  --bubble-duration: 6.5s;
+}
+
+.backend-bubble-wdm {
+  bottom: 5%;
+  left: -3%;
+  --bubble-rotation: 1.2deg;
+  --bubble-scale: 0.96;
+  --bubble-delay: -2.4s;
+  --bubble-duration: 5.9s;
+}
+
+.backend-bubble-mme {
+  right: 16%;
+  bottom: 0;
+  --bubble-rotation: -1.5deg;
+  --bubble-scale: 0.88;
+  --bubble-delay: -0.9s;
+  --bubble-duration: 5.1s;
+}
+
+@keyframes backend-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(var(--bubble-rotation)) scale(var(--bubble-scale));
+  }
+  50% {
+    transform: translate3d(0, -6px, 0) rotate(var(--bubble-rotation)) scale(var(--bubble-scale));
+  }
 }
 
 .signal-line {
@@ -988,6 +1068,10 @@ p {
   fill: none;
   stroke: var(--accent);
   stroke-width: 1.2;
+}
+
+.matrix-axis-left {
+  display: none;
 }
 
 .matrix-scroll {
@@ -1435,6 +1519,12 @@ p {
   font-size: 0.72rem;
 }
 
+.warning-inline p {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+}
+
 .warning-inline strong {
   color: var(--warning);
 }
@@ -1879,6 +1969,72 @@ body.reveal-ready [data-reveal].is-visible {
 }
 
 /* Responsive */
+@media (min-width: 901px) {
+  .product-window {
+    flex-shrink: 0;
+    width: min(500px, 106%);
+  }
+
+  .backend-bubbles {
+    inset: 50% auto auto 50%;
+    display: block;
+    width: min(500px, 106%);
+    height: 52%;
+    transform: translate(-50%, -50%);
+  }
+
+  .matrix-shell {
+    padding: 64px 20px 20px 54px;
+  }
+
+  .matrix-axis-top {
+    top: 3px;
+    right: 20px;
+    left: 54px;
+    height: 64px;
+    justify-content: flex-start;
+  }
+
+  .matrix-axis-left {
+    top: 78px;
+    right: auto;
+    left: 31px;
+    display: flex;
+    transform: rotate(90deg);
+    transform-origin: 0 50%;
+  }
+
+  .matrix-scroll {
+    overflow-x: hidden;
+  }
+
+  .route-matrix {
+    min-width: 0;
+  }
+
+  .route-matrix thead th:first-child {
+    width: clamp(92px, 18%, 120px);
+  }
+
+  .processing-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .processing-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .warning-inline {
+    display: flex;
+    min-height: 64px;
+    align-items: center;
+    margin-top: auto;
+  }
+}
+
 @media (max-width: 1080px) {
   .menu-toggle {
     display: block;
@@ -1933,9 +2089,6 @@ body.reveal-ready [data-reveal].is-visible {
     gap: 38px;
   }
 
-  .route-chip-input { left: -2%; }
-  .route-chip-output { right: -3%; }
-
   .soundcheck-card {
     grid-template-columns: 100px minmax(0, 1fr);
   }
@@ -1979,8 +2132,13 @@ body.reveal-ready [data-reveal].is-visible {
     right: 0;
   }
 
-  .route-chip-input { left: 10%; }
-  .route-chip-output { right: 8%; }
+  .backend-bubbles {
+    inset: 50% auto auto 50%;
+    display: block;
+    width: min(455px, 92%);
+    height: 48%;
+    transform: translate(-50%, -50%);
+  }
 
   .matrix-layout {
     grid-template-columns: 1fr;
@@ -2101,26 +2259,15 @@ body.reveal-ready [data-reveal].is-visible {
     transform: none;
   }
 
+  .backend-bubbles {
+    width: min(410px, 92%);
+  }
+
   .logo-orbit {
     top: 7%;
     right: -35%;
     width: 430px;
     height: 430px;
-  }
-
-  .route-chip {
-    min-width: 135px;
-    padding: 9px 11px;
-  }
-
-  .route-chip-input {
-    top: 17%;
-    left: 0;
-  }
-
-  .route-chip-output {
-    right: 0;
-    bottom: 10%;
   }
 
   .stats-grid {
@@ -2272,12 +2419,15 @@ body.reveal-ready [data-reveal].is-visible {
     min-height: 540px;
   }
 
-  .route-chip {
-    min-width: 125px;
+  .backend-bubble {
+    gap: 6px;
+    padding: 7px 10px;
+    font-size: 0.66rem;
   }
 
-  .route-chip strong {
-    font-size: 0.68rem;
+  .backend-bubble::before {
+    width: 5px;
+    height: 5px;
   }
 
   .matrix-shell {
