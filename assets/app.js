@@ -1,6 +1,20 @@
 (() => {
   "use strict";
 
+  const languageStorageKey = "lufiaasio-language";
+  const languageDeploymentStorageKey = "lufiaasio-language-deployment";
+  const languageDeploymentSignature = (() => {
+    try {
+      const script = document.currentScript || document.querySelector('script[src*="assets/app.js"]');
+      const scriptVersion = script?.src
+        ? new URL(script.src, window.location.href).searchParams.get("v") || "unversioned"
+        : "unversioned";
+      return `${document.lastModified}|${scriptVersion}`;
+    } catch (_) {
+      return `unknown|${document.lastModified}`;
+    }
+  })();
+
   const zh = {
     "a11y.skip": "跳到主要内容",
     "a11y.home": "LufiaASIO 首页",
@@ -264,7 +278,8 @@
 
     if (persist) {
       try {
-        window.localStorage.setItem("lufiaasio-language", currentLanguage);
+        window.localStorage.setItem(languageStorageKey, currentLanguage);
+        window.localStorage.setItem(languageDeploymentStorageKey, languageDeploymentSignature);
       } catch (_) {
         // The page remains fully usable when storage is unavailable.
       }
@@ -351,11 +366,18 @@
   }
 
   let savedLanguage = "en";
+  let persistLanguageReset = false;
   try {
-    const stored = window.localStorage.getItem("lufiaasio-language");
-    if (stored === "zh-CN" || stored === "en") savedLanguage = stored;
+    const storedLanguage = window.localStorage.getItem(languageStorageKey);
+    const storedDeployment = window.localStorage.getItem(languageDeploymentStorageKey);
+    if (storedDeployment === languageDeploymentSignature && (storedLanguage === "zh-CN" || storedLanguage === "en")) {
+      savedLanguage = storedLanguage;
+    } else {
+      // Every newly deployed page starts in English once, then remembers the user's choice for that deployment.
+      persistLanguageReset = true;
+    }
   } catch (_) {
     // English remains the deterministic first-visit default.
   }
-  setLanguage(savedLanguage, false);
+  setLanguage(savedLanguage, persistLanguageReset);
 })();
