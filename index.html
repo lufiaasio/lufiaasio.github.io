@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e1513">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="LufiaASIO is a multi-protocol Windows audio router: one ASIO driver, five backends, and independent input-to-output routing for measurement workflows.">
+  <meta name="author" content="Aspirin">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LufiaASIO">
+  <meta property="og:title" content="LufiaASIO — Route without compromise">
+  <meta property="og:description" content="One ASIO driver. Five Windows audio backends. Any input-to-output combination.">
+  <meta property="og:url" content="https://lufiaasio.github.io/">
+  <meta property="og:image" content="https://lufiaasio.github.io/assets/media/lufiaasio-icon.png">
+  <meta property="og:image:width" content="2083">
+  <meta property="og:image:height" content="2082">
+  <meta property="og:image:alt" content="LufiaASIO logo">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LufiaASIO — Route without compromise">
+  <meta name="twitter:description" content="One ASIO driver. Five Windows audio backends. Any input-to-output combination.">
+  <meta name="twitter:image" content="https://lufiaasio.github.io/assets/media/lufiaasio-icon.png">
+  <link rel="canonical" href="https://lufiaasio.github.io/">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="preload" href="assets/media/control-panel.png" as="image" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css?v=20260724-2">
+  <script defer src="assets/app.js?v=20260724"></script>
+  <title>LufiaASIO — Route without compromise</title>
+</head>
+<body>
+  <a class="skip-link" href="#main-content" data-i18n="a11y.skip">Skip to main content</a>
+
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="LufiaASIO home" data-i18n-aria="a11y.home">
+        <img src="assets/media/lufiaasio-icon.png" width="42" height="42" alt="" aria-hidden="true">
+        <span>LufiaASIO</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-panel" id="nav-panel" data-nav-panel>
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria="a11y.mainNav">
+          <a href="#features" data-i18n="nav.features">Features</a>
+          <a href="#workflows" data-i18n="nav.workflows">Workflows</a>
+          <a href="#processing" data-i18n="nav.processing">Processing</a>
+          <a href="#quick-start" data-i18n="nav.quickStart">Quick start</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="language-switch" role="group" aria-label="Language" data-i18n-aria="a11y.language">
+            <button type="button" data-language="en" aria-pressed="true">EN</button>
+            <span aria-hidden="true"></span>
+            <button type="button" data-language="zh-CN" aria-pressed="false">中文</button>
+          </div>
+          <a class="nav-github" href="https://github.com/aspirinkisalol/LufiaASIO-Release" target="_blank" rel="noreferrer" aria-label="LufiaASIO on GitHub" data-i18n-aria="a11y.github">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.28-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.95.13 2.87.39 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.71 5.39-5.29 5.68.42.36.79 1.07.79 2.16v3.24c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+          </a>
+          <a class="button button-small button-primary" href="https://github.com/aspirinkisalol/LufiaASIO-Release/releases" target="_blank" rel="noreferrer">
+            <span data-i18n="nav.download">Download</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m0 0 4-4m-4 4L6 8M3 15.5h14"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="hero-grid container">
+        <div class="hero-copy" data-reveal>
+          <div class="hero-meta">
+            <span class="eyebrow" data-i18n="hero.eyebrow">Windows audio, routed your way</span>
+            <span class="version-pill"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.version">1.2.8 Alpha</span></span>
+          </div>
+          <h1>
+            <span data-i18n="hero.titleOne">One ASIO driver.</span>
+            <span class="gradient-text" data-i18n="hero.titleTwo">Five Windows audio backends.</span>
+          </h1>
+          <p class="hero-lead" data-i18n="hero.lead">Any input-to-output combination.</p>
+          <p class="hero-description" data-i18n="hero.description">A multi-protocol audio router for measurement benches that need the freedom to pair the right ADC, DAC, driver, and host—without abandoning the ASIO workflow.</p>
+
+          <div class="alpha-note" role="note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5m0 3.5v.1M10.3 3.8 2.1 18a2 2 0 0 0 1.74 3h16.32a2 2 0 0 0 1.73-3L13.73 3.8a2 2 0 0 0-3.46 0Z"/></svg>
+            <p><strong data-i18n="hero.alphaTitle">Preview release.</strong> <span data-i18n="hero.alphaBody">Verify every critical measurement against a known reference before production use.</span></p>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/aspirinkisalol/LufiaASIO-Release/releases" target="_blank" rel="noreferrer">
+              <span data-i18n="hero.download">Download 1.2.8 Alpha</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m0 0 4-4m-4 4L6 8M3 15.5h14"/></svg>
+            </a>
+            <a class="button button-secondary" href="https://github.com/aspirinkisalol/LufiaASIO-Release" target="_blank" rel="noreferrer">
+              <svg class="github-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.28-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.95.13 2.87.39 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.71 5.39-5.29 5.68.42.36.79 1.07.79 2.16v3.24c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+              <span data-i18n="hero.github">View on GitHub</span>
+            </a>
+          </div>
+
+          <p class="platform-note">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 3.5 9 2.6v6.7H2.5V3.5Zm7.5-1.05 7.5-1.05v7.9H10V2.45ZM2.5 10.3H9V17l-6.5-.9v-5.8Zm7.5 0h7.5v8.3L10 17.55V10.3Z"/></svg>
+            <span data-i18n="hero.platform">Windows 10 / 11 · 32-bit and 64-bit ASIO hosts</span>
+          </p>
+        </div>
+
+        <div class="hero-visual" data-reveal data-delay="120">
+          <div class="logo-orbit" aria-hidden="true">
+            <img src="assets/media/lufiaasio-icon.png" width="2083" height="2082" alt="">
+          </div>
+          <div class="signal-line signal-line-a" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="signal-line signal-line-b" aria-hidden="true"><span></span><span></span></div>
+          <figure class="product-window">
+            <div class="window-chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <small>LufiaASIO Control Panel</small>
+            </div>
+            <img src="assets/media/control-panel.png" width="1062" height="1272" alt="LufiaASIO control panel showing independent ASIO input and WASAPI Exclusive output routing" data-i18n-alt="images.controlPanel" fetchpriority="high">
+          </figure>
+          <div class="route-chip route-chip-input"><span data-i18n="hero.input">INPUT</span><strong>Native ASIO</strong></div>
+          <div class="route-chip route-chip-output"><span data-i18n="hero.output">OUTPUT</span><strong>WASAPI Exclusive</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-label="LufiaASIO at a glance" data-i18n-aria="a11y.stats">
+      <div class="container">
+        <div class="stats-grid" data-reveal>
+          <article class="stat-item">
+            <strong>5</strong>
+            <span data-i18n="stats.backends">Windows backends</span>
+          </article>
+          <article class="stat-item">
+            <strong>25</strong>
+            <span data-i18n="stats.pairings">backend pairings</span>
+          </article>
+          <article class="stat-item stat-rate">
+            <strong>1,536 <small>kHz</small></strong>
+            <span data-i18n="stats.rate">up to 32-bit PCM*</span>
+          </article>
+          <article class="stat-item">
+            <strong>512–1M</strong>
+            <span data-i18n="stats.buffer">host buffer frames</span>
+          </article>
+        </div>
+        <p class="stats-footnote" data-i18n="stats.qualifier">* Only when a compatible WASAPI Exclusive PCM32 endpoint accepts the format. Unsupported rates are never simulated.</p>
+      </div>
+    </section>
+
+    <section class="section routing-section" id="features">
+      <div class="container">
+        <header class="section-heading" data-reveal>
+          <span class="section-kicker" data-i18n="routing.kicker">ROUTING WITHOUT THE SINGLE-DRIVER BOX</span>
+          <h2 data-i18n="routing.title">Build the signal chain your bench actually needs.</h2>
+          <p data-i18n="routing.description">Choose the input and output backend independently. LufiaASIO reports an unsupported route instead of silently falling back to another API.</p>
+        </header>
+
+        <div class="matrix-layout">
+          <div class="matrix-copy" data-reveal>
+            <div class="matrix-number">5 × 5</div>
+            <h3 data-i18n="matrix.title">Every backend can meet every backend.</h3>
+            <p data-i18n="matrix.description">Bring a Windows endpoint into an ASIO-only host, aggregate two native ASIO drivers, or mix a legacy capture path with a modern playback device.</p>
+            <ul class="check-list">
+              <li><span aria-hidden="true">✓</span><span data-i18n="matrix.itemOne">Independent mode, device, and channel selection</span></li>
+              <li><span aria-hidden="true">✓</span><span data-i18n="matrix.itemTwo">WASAPI Auto, Exclusive, and Shared choices</span></li>
+              <li><span aria-hidden="true">✓</span><span data-i18n="matrix.itemThree">Exact sample-rate validation on every enabled side</span></li>
+            </ul>
+          </div>
+
+          <div class="matrix-shell" data-reveal data-delay="100">
+            <div class="matrix-axis matrix-axis-top"><span data-i18n="matrix.outputAxis">OUTPUT BACKEND</span><svg viewBox="0 0 40 12" aria-hidden="true"><path d="M1 6h36m-5-5 5 5-5 5"/></svg></div>
+            <div class="matrix-scroll" tabindex="0" aria-label="Scrollable five by five audio backend compatibility matrix" data-i18n-aria="a11y.matrix">
+              <table class="route-matrix" data-route-matrix>
+                <caption class="sr-only" data-i18n="matrix.caption">Supported LufiaASIO input and output backend combinations</caption>
+                <thead>
+                  <tr>
+                    <th scope="col"><span data-i18n="matrix.inputOutput">Input / Output</span></th>
+                    <th scope="col" data-col="1">WASAPI</th>
+                    <th scope="col" data-col="2">MME</th>
+                    <th scope="col" data-col="3">DirectSound</th>
+                    <th scope="col" data-col="4">WDM-KS</th>
+                    <th scope="col" data-col="5">Native ASIO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">WASAPI</th>
+                    <td data-col="1"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="2"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="3"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="4"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="5"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">MME</th>
+                    <td data-col="1"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="2"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="3"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="4"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="5"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DirectSound</th>
+                    <td data-col="1"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="2"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="3"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="4"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="5"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">WDM-KS</th>
+                    <td data-col="1"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="2"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="3"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="4"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="5"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Native ASIO</th>
+                    <td data-col="1"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="2"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="3"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="4"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                    <td data-col="5"><span aria-hidden="true">✓</span><span class="sr-only" data-i18n="matrix.supported">Supported</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card" data-reveal>
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h5v5H5V5Zm9 9h5v5h-5v-5ZM7.5 10v3.5A3.5 3.5 0 0 0 11 17h3m2.5-3V9.5A3.5 3.5 0 0 0 13 6h-3"/></svg></div>
+            <h3 data-i18n="features.aggregateTitle">Native-ASIO aggregation</h3>
+            <p data-i18n="features.aggregateBody">Present one ASIO device to the host while capturing from one native driver and playing through another.</p>
+          </article>
+          <article class="feature-card" data-reveal data-delay="60">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17V7m4 13V4m4 12V8m4 11V5m4 12V7"/></svg></div>
+            <h3 data-i18n="features.rateTitle">Beyond the GUI rate list</h3>
+            <p data-i18n="features.rateBody">Probe the native WASAPI Exclusive endpoint directly and expose every format the hardware actually accepts.</p>
+          </article>
+          <article class="feature-card" data-reveal data-delay="120">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 12 2.2 2.2 4.8-5M12 2.5 4.5 5.7v5.1c0 4.8 3.2 8.9 7.5 10.7 4.3-1.8 7.5-5.9 7.5-10.7V5.7L12 2.5Z"/></svg></div>
+            <h3 data-i18n="features.bitPerfectTitle">Bit-perfect, when the path is eligible</h3>
+            <p data-i18n="features.bitPerfectBody">Compatible integer WASAPI Exclusive, native ASIO, and eligible WDM-KS paths can remain bit-perfect with all processing disabled.</p>
+          </article>
+          <article class="feature-card" data-reveal>
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5V4Zm3 4h8M8 12h5M8 16h3"/></svg></div>
+            <h3 data-i18n="features.recallTitle">Stable device recall</h3>
+            <p data-i18n="features.recallBody">Profiles follow each backend's native device ID—not duplicate, corrupted, or reordered display names.</p>
+          </article>
+          <article class="feature-card" data-reveal data-delay="60">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15h3l2-7 4 12 2.5-9 1.5 4h3"/></svg></div>
+            <h3 data-i18n="features.realtimeTitle">A disciplined real-time path</h3>
+            <p data-i18n="features.realtimeBody">No heap allocation, registry access, file I/O, or interface work runs inside the real-time callback.</p>
+          </article>
+          <article class="feature-card" data-reveal data-delay="120">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h3v-5H4v5Zm6 0h3V8h-3v10Zm6 0h3V4h-3v14ZM3 21h18"/></svg></div>
+            <h3 data-i18n="features.diagnosticsTitle">Diagnostics you can act on</h3>
+            <p data-i18n="features.diagnosticsBody">Inspect underflow, overflow, discontinuity, callback, frame, and FIFO watermark counters from the control panel.</p>
+          </article>
+        </div>
+
+        <div class="compatibility-note" role="note" data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5v4m0 3v.1M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Z"/></svg>
+          <p><strong data-i18n="features.compatTitle">Compatibility paths stay honest.</strong> <span data-i18n="features.compatBody">MME, DirectSound, WASAPI Shared, and routes that require Windows format conversion are not advertised as bit-perfect.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflows-section" id="workflows">
+      <div class="container">
+        <header class="section-heading centered" data-reveal>
+          <span class="section-kicker" data-i18n="workflows.kicker">BUILT FOR MEASUREMENT WORKFLOWS</span>
+          <h2 data-i18n="workflows.title">Keep the software you know. Connect the hardware you need.</h2>
+          <p data-i18n="workflows.description">LufiaASIO bridges Windows endpoints and independent interfaces into ASIO-capable test tools without hiding the real transport.</p>
+        </header>
+
+        <div class="workflow-grid">
+          <article class="workflow-card workflow-card-large" data-reveal>
+            <div class="workflow-media">
+              <img src="assets/media/apx500.png" width="1541" height="944" loading="lazy" alt="Audio Precision APx500 using LufiaASIO at 768 kHz in a digital loopback measurement" data-i18n-alt="images.apx">
+              <span class="media-badge">768 kHz</span>
+            </div>
+            <div class="workflow-content">
+              <div class="product-label"><span>AP</span> Audio Precision APx</div>
+              <h3 data-i18n="workflows.apxTitle">Bring Windows endpoints into an ASIO-only bench.</h3>
+              <p data-i18n="workflows.apxBody">Use LufiaASIO as the APx connector, then route either direction to WASAPI Exclusive, WDM-KS, or a native ASIO device.</p>
+            </div>
+          </article>
+
+          <article class="workflow-card" data-reveal data-delay="100">
+            <div class="workflow-media">
+              <img src="assets/media/rew.png" width="841" height="726" loading="lazy" alt="Room EQ Wizard using LufiaASIO for a 768 kHz digital loopback route" data-i18n-alt="images.rew">
+              <span class="media-badge">REW</span>
+            </div>
+            <div class="workflow-content">
+              <div class="product-label"><span>R</span> Room EQ Wizard</div>
+              <h3 data-i18n="workflows.rewTitle">Mix interfaces without giving up ASIO.</h3>
+              <p data-i18n="workflows.rewBody">Decouple the host buffer from each backend's native packet size for large FFTs, sustained recording, and responsive wideband work.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="soundcheck-card" data-reveal>
+          <div class="soundcheck-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div>
+            <span class="section-kicker">LISTEN SOUNDCHECK</span>
+            <h3 data-i18n="workflows.soundcheckTitle">Routing flexibility for sustained test sequences.</h3>
+            <p data-i18n="workflows.soundcheckBody">The composite engine is designed for continuous callbacks, mismatched packet sizes, and deliberately large host buffers.</p>
+          </div>
+          <div class="soundcheck-metrics" role="group" aria-label="Workflow characteristics" data-i18n-aria="a11y.workflowMetrics">
+            <span><strong>24/7</strong><small data-i18n="workflows.continuous">continuous workloads</small></span>
+            <span><strong>1M</strong><small data-i18n="workflows.maxBuffer">maximum buffer frames</small></span>
+          </div>
+        </div>
+
+        <p class="case-disclaimer" data-i18n="workflows.disclaimer">Shown results are examples from the pictured digital-loopback test setup. They are not guaranteed specifications for other hardware.</p>
+      </div>
+    </section>
+
+    <section class="section processing-section" id="processing">
+      <div class="container">
+        <header class="section-heading" data-reveal>
+          <span class="section-kicker" data-i18n="processing.kicker">PRECISION MEASUREMENT PROCESSING</span>
+          <h2 data-i18n="processing.title">Put calibrated processing inside the route.</h2>
+          <p data-i18n="processing.description">Per-channel tools appear only on native ASIO and WASAPI Exclusive routes, with profiles bound to backend, direction, mode, device ID, and channel.</p>
+        </header>
+
+        <div class="processing-grid">
+          <article class="processing-card" data-reveal>
+            <figure class="processing-media">
+              <img src="assets/media/thd-compensation.png" width="1533" height="722" loading="lazy" alt="LufiaASIO THD Compensation controls beside a REW spectrum measurement" data-i18n-alt="images.thd">
+            </figure>
+            <div class="processing-content">
+              <div class="processing-topline"><span data-i18n="processing.outputTool">INPUT / OUTPUT TOOL</span><span>C2–C5</span></div>
+              <h3 data-i18n="processing.thdTitle">Per-channel THD Compensation</h3>
+              <p data-i18n="processing.thdBody">Apply signed polynomial correction with selectable coefficient resolution, live preview, peak prediction, and optional automatic attenuation.</p>
+              <ul>
+                <li data-i18n="processing.thdItemOne">Independent coefficients for every enabled channel</li>
+                <li data-i18n="processing.thdItemTwo">16- to 32-bit coefficient resolution</li>
+                <li data-i18n="processing.thdItemThree">Experimental harmonic voicing without a conventional EQ curve</li>
+              </ul>
+              <div class="warning-inline"><strong data-i18n="processing.calibration">Calibration required.</strong> <span data-i18n="processing.thdWarning">Coefficients are specific to device, channel, level, load, and setup.</span></div>
+            </div>
+          </article>
+
+          <article class="processing-card" data-reveal data-delay="100">
+            <figure class="processing-media">
+              <img src="assets/media/auto-notch.png" width="2330" height="1031" loading="lazy" alt="LufiaASIO adaptive Notch controls beside a REW residual spectrum" data-i18n-alt="images.notch">
+            </figure>
+            <div class="processing-content">
+              <div class="processing-topline"><span data-i18n="processing.inputTool">INPUT TOOL</span><span>Adaptive / Fixed</span></div>
+              <h3 data-i18n="processing.notchTitle">Digital fundamental Notch</h3>
+              <p data-i18n="processing.notchBody">Suppress the captured fundamental so low-level harmonics and residual noise are easier to inspect.</p>
+              <ul>
+                <li data-i18n="processing.notchItemOne">Adaptive search range with automatic lock tracking</li>
+                <li data-i18n="processing.notchItemTwo">Fixed frequency, attenuation, and Q</li>
+                <li data-i18n="processing.notchItemThree">Live lock status and per-channel profiles</li>
+              </ul>
+              <div class="warning-inline"><strong data-i18n="processing.method">Include it in the method.</strong> <span data-i18n="processing.notchWarning">The Notch changes captured data; fixed mode may need a matching calibration curve.</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="processing-caution" role="note" data-reveal>
+          <div class="caution-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5m0 3.5v.1M10.3 3.8 2.1 18a2 2 0 0 0 1.74 3h16.32a2 2 0 0 0 1.73-3L13.73 3.8a2 2 0 0 0-3.46 0Z"/></svg></div>
+          <div>
+            <h3 data-i18n="processing.cautionTitle">Processing intentionally changes samples.</h3>
+            <p data-i18n="processing.cautionBody">Disable THD Compensation and Notch for bit-perfect transport tests. Establish a clean baseline before enabling either tool.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quick-start-section" id="quick-start">
+      <div class="container">
+        <header class="section-heading centered" data-reveal>
+          <span class="section-kicker" data-i18n="quick.kicker">QUICK START</span>
+          <h2 data-i18n="quick.title">From installer to a verified route.</h2>
+          <p data-i18n="quick.description">Start unprocessed, prove the signal path, then add only the measurement tools your method requires.</p>
+        </header>
+
+        <ol class="steps-grid">
+          <li class="step-card" data-reveal>
+            <span class="step-number">01</span>
+            <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg></div>
+            <h3 data-i18n="quick.stepOneTitle">Install the right package</h3>
+            <p data-i18n="quick.stepOneBody">Use x64 on 64-bit Windows—it registers both x64 and x86 ASIO components. Use x86 only on 32-bit Windows.</p>
+          </li>
+          <li class="step-card" data-reveal data-delay="60">
+            <span class="step-number">02</span>
+            <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v11H5V5Zm4 15h6m-3-4v4"/></svg></div>
+            <h3 data-i18n="quick.stepTwoTitle">Select LufiaASIO</h3>
+            <p data-i18n="quick.stepTwoBody">Choose LufiaASIO as the ASIO driver in your host, then open its control panel.</p>
+          </li>
+          <li class="step-card" data-reveal data-delay="120">
+            <span class="step-number">03</span>
+            <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10m3 0h3M4 12h3m3 0h10M4 17h8m3 0h5M14 5v4M7 10v4m5 1v4"/></svg></div>
+            <h3 data-i18n="quick.stepThreeTitle">Build the route</h3>
+            <p data-i18n="quick.stepThreeBody">Set mode, device, and channels independently for input and output. Apply, then allow the host to reset.</p>
+          </li>
+          <li class="step-card" data-reveal data-delay="180">
+            <span class="step-number">04</span>
+            <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 12 2.2 2.2 4.8-5M12 2.5 4.5 5.7v5.1c0 4.8 3.2 8.9 7.5 10.7 4.3-1.8 7.5-5.9 7.5-10.7V5.7L12 2.5Z"/></svg></div>
+            <h3 data-i18n="quick.stepFourTitle">Verify before processing</h3>
+            <p data-i18n="quick.stepFourBody">Confirm rate, channel order, level, and an unprocessed baseline. Start near 2,048 or 16,384 frames for measurement work.</p>
+          </li>
+        </ol>
+
+        <div class="clock-panel" data-reveal>
+          <div class="clock-visual" aria-hidden="true">
+            <span class="clock-ring"></span>
+            <span class="clock-hand clock-hand-one"></span>
+            <span class="clock-hand clock-hand-two"></span>
+          </div>
+          <div class="clock-copy">
+            <span class="section-kicker" data-i18n="clock.kicker">IMPORTANT CLOCKING NOTE</span>
+            <h3 data-i18n="clock.title">Matching sample-rate labels do not mean matching clocks.</h3>
+            <p data-i18n="clock.body">LufiaASIO avoids adaptive sample-rate conversion to preserve eligible bit-perfect paths. Two independent devices can drift until the FIFO underflows or overflows.</p>
+            <p class="clock-action"><strong data-i18n="clock.actionTitle">For long synchronized measurements:</strong> <span data-i18n="clock.actionBody">share word clock, a common digital clock, or another confirmed hardware reference.</span></p>
+          </div>
+          <div class="clock-status">
+            <span><i></i><span data-i18n="clock.noSrc">No adaptive SRC</span></span>
+            <span><i></i><span data-i18n="clock.fifo">Best-effort FIFO</span></span>
+            <span><i></i><span data-i18n="clock.sync">Hardware sync advised</span></span>
+          </div>
+        </div>
+
+        <div class="download-panel" data-reveal>
+          <div>
+            <span class="version-pill"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.version">1.2.8 Alpha</span></span>
+            <h2 data-i18n="download.title">Ready to build a more flexible Windows audio chain?</h2>
+            <p data-i18n="download.body">Download only from the official release page and verify the accompanying SHA-256 file before installation.</p>
+          </div>
+          <div class="download-actions">
+            <a class="button button-primary" href="https://github.com/aspirinkisalol/LufiaASIO-Release/releases" target="_blank" rel="noreferrer">
+              <span data-i18n="download.releases">Open GitHub Releases</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4 6 14m-2-5v7h7"/></svg>
+            </a>
+            <a class="text-link" href="https://github.com/aspirinkisalol/LufiaASIO-Release#quick-start" target="_blank" rel="noreferrer"><span data-i18n="download.guide">Read the install guide</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="container faq-layout">
+        <header class="section-heading" data-reveal>
+          <span class="section-kicker" data-i18n="faq.kicker">FAQ</span>
+          <h2 data-i18n="faq.title">The details that keep a measurement honest.</h2>
+          <p data-i18n="faq.description">LufiaASIO expands routing choices; it does not override hardware, driver, format, or clock limitations.</p>
+          <a class="text-link" href="https://github.com/aspirinkisalol/LufiaASIO-Release#troubleshooting" target="_blank" rel="noreferrer"><span data-i18n="faq.fullGuide">Full troubleshooting guide</span><span aria-hidden="true">→</span></a>
+        </header>
+
+        <div class="faq-list" data-reveal data-delay="100">
+          <details>
+            <summary><span data-i18n="faq.qOne">Why is a sample rate missing?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+            <p data-i18n="faq.aOne">Every enabled side must support the exact rate. WASAPI Shared accepts only the current Windows Mix Format; unsupported native formats remain unavailable.</p>
+          </details>
+          <details>
+            <summary><span data-i18n="faq.qTwo">Why will two native ASIO devices not open together?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+            <p data-i18n="faq.aTwo">Some vendor drivers allow only one process-global instance. Close other audio applications or use a different backend for one side when appropriate.</p>
+          </details>
+          <details>
+            <summary><span data-i18n="faq.qThree">What causes break-up during a long test?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+            <p data-i18n="faq.aThree">Increase the buffer and inspect FIFO underflow and overflow counters. If they continue rising across independent devices, synchronize the hardware clocks.</p>
+          </details>
+          <details>
+            <summary><span data-i18n="faq.qFour">Is every LufiaASIO route bit-perfect?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+            <p data-i18n="faq.aFour">No. Eligible native integer WASAPI Exclusive, native ASIO, and some WDM-KS paths can be bit-perfect. Shared, MME, DirectSound, format conversion, THD Compensation, and Notch are not.</p>
+          </details>
+          <details>
+            <summary><span data-i18n="faq.qFive">Does hiding the clock warning synchronize devices?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+            <p data-i18n="faq.aFive">No. It changes only the display. Independent clocks still drift unless the devices share a confirmed hardware reference.</p>
+          </details>
+          <details>
+            <summary><span data-i18n="faq.qSix">Is this release ready for compliance or production pass/fail work?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+            <p data-i18n="faq.aSix">Not without independent validation. Version 1.2.8 Alpha is a preview intended for evaluation and measurement-lab testing.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="LufiaASIO home" data-i18n-aria="a11y.home">
+            <img src="assets/media/lufiaasio-icon.png" width="46" height="46" loading="lazy" alt="" aria-hidden="true">
+            <span>LufiaASIO</span>
+          </a>
+          <p data-i18n="footer.tagline">Route without compromise. Measure with context.</p>
+          <p class="footer-author"><span data-i18n="footer.createdBy">Created and maintained by</span> <a href="https://github.com/aspirinkisalol" target="_blank" rel="noreferrer">Aspirin (@aspirinkisalol)</a>.</p>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <h2 data-i18n="footer.product">Product</h2>
+            <a href="#features" data-i18n="nav.features">Features</a>
+            <a href="#workflows" data-i18n="nav.workflows">Workflows</a>
+            <a href="#processing" data-i18n="nav.processing">Processing</a>
+            <a href="#quick-start" data-i18n="nav.quickStart">Quick start</a>
+          </div>
+          <div>
+            <h2 data-i18n="footer.resources">Resources</h2>
+            <a href="https://github.com/aspirinkisalol/LufiaASIO-Release/releases" target="_blank" rel="noreferrer">Releases</a>
+            <a href="https://github.com/aspirinkisalol/LufiaASIO-Release" target="_blank" rel="noreferrer">README</a>
+            <a href="https://github.com/aspirinkisalol/LufiaASIO-Release/issues" target="_blank" rel="noreferrer">GitHub Issues</a>
+          </div>
+        </div>
+
+        <div class="asio-mark">
+          <img src="assets/media/asio-compatible.png" width="474" height="443" loading="lazy" alt="ASIO Compatible — ASIO is a registered trademark of Steinberg Media Technologies GmbH" data-i18n-alt="images.asio">
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <p data-i18n="footer.legal">LufiaASIO is an independent project and is not affiliated with, sponsored by, or endorsed by Steinberg Media Technologies GmbH. Audio Precision, APx, SoundCheck, Room EQ Wizard, and other product names belong to their respective owners.</p>
+        <p>© 2026 Aspirin · <span data-i18n="footer.preview">LufiaASIO 1.2.8 Alpha preview</span></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

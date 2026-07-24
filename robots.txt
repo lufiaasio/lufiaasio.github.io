@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lufiaasio.github.io/sitemap.xml
